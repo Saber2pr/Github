@@ -4,10 +4,8 @@ import { User } from '@saber2pr/types-github-api'
 import { FootBar } from '../../components/footBar/footBar'
 import './profile.less'
 import * as Svg from '../../components/svg'
-
-export interface Profile {
-  userId?: string
-}
+import { Anchor } from '@saber2pr/router'
+import { store } from '../../store/store'
 
 const useUserId = (userId = 'saber2pr') => {
   const [userInfor, setUserInfor] = useState<User>({} as User)
@@ -17,13 +15,18 @@ const useUserId = (userId = 'saber2pr') => {
   return userInfor
 }
 
-export const Profile = ({ userId }: Profile) => {
+export const Profile = () => {
   const { login, name, company, blog, location, bio, avatar_url } = useUserId(
-    userId
+    store.getState().userId
   )
   return (
     <>
-      <header>Profile</header>
+      <header>
+        Profile
+        <Anchor className="right" href="/menu">
+          <Svg.Menu />
+        </Anchor>
+      </header>
       <main className="profile">
         <dl className="table">
           <dd>

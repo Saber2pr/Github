@@ -6,6 +6,7 @@ import './repo.less'
 import { useIndex } from '../../hooks'
 import { Anchor } from '@saber2pr/router'
 import * as Svg from '../../components/svg'
+import { store } from '../../store/store'
 
 const useUserRopesPage = (
   userId = 'saber2pr',
@@ -22,18 +23,14 @@ const useUserRopesPage = (
   return repos
 }
 
-export interface Repo {
-  userId?: string
-}
-
-export const Repo = ({ userId }: Repo) => {
+export const Repo = () => {
   const [index, last, next] = useIndex()
-  const repos = useUserRopesPage(userId, index)
+  const repos = useUserRopesPage(store.getState().userId, index)
   return (
     <>
       <header>
         Repository
-        <Anchor href="/findRepo">
+        <Anchor className="right" href="/findRepo">
           <Svg.Search />
         </Anchor>
       </header>
@@ -44,6 +41,7 @@ export const Repo = ({ userId }: Repo) => {
             <li className="item" key={repo.id}>
               <dl>
                 <dt>
+                  <Svg.Book />
                   <a href={repo.html_url}>
                     <strong>{repo.name}</strong>
                   </a>

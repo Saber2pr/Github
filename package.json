@@ -24,6 +24,7 @@
     "webpack-dev-server": "^3.4.1"
   },
   "dependencies": {
+    "@saber2pr/redux": "0.0.4",
     "@saber2pr/router": "0.0.2",
     "@saber2pr/types-github-api": "0.0.7",
     "@types/react": "^16.8.18",

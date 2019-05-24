@@ -3,6 +3,7 @@ import { FootBar } from '../../components/footBar/footBar'
 import { Events } from '@saber2pr/types-github-api'
 import './news.less'
 import { Request } from '../../request'
+import { store } from '../../store/store'
 
 const useUserEvents = (userId: string = 'saber2pr') => {
   const [events, setEvents] = useState<Events>([])
@@ -12,8 +13,8 @@ const useUserEvents = (userId: string = 'saber2pr') => {
   return events
 }
 
-export const News = ({ userId }: { userId?: string }) => {
-  const events = useUserEvents(userId)
+export const News = () => {
+  const events = useUserEvents(store.getState().userId)
   return (
     <>
       <header>News</header>

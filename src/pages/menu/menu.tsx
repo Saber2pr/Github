@@ -4,7 +4,10 @@ import { store } from '../../store/store'
 import * as A from '../../store/actions'
 import { push } from '@saber2pr/router'
 
-export const Menu = () => {
+const useUpdateUser = (): [
+  React.MutableRefObject<HTMLInputElement>,
+  string
+] => {
   const userIdInput = useRef<HTMLInputElement>()
 
   const [current, setUserId] = useState(store.getState().userId)
@@ -14,6 +17,12 @@ export const Menu = () => {
       push('/')
     })
   )
+
+  return [userIdInput, current]
+}
+
+export const Menu = () => {
+  const [userIdInput, current] = useUpdateUser()
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()

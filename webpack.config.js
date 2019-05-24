@@ -2,7 +2,7 @@
  * @Author: saber2pr
  * @Date: 2019-05-22 20:20:01
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-05-23 22:59:31
+ * @Last Modified time: 2019-05-24 20:42:05
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -16,7 +16,7 @@ const {
 } = require('@saber2pr/webpack-configer')
 
 module.exports = WebpackConfig({
-  mode: 'development',
+  mode: 'production',
   entry: './src/index.tsx',
   resolve: {
     extensions: ['.js', '.ts', '.tsx']
@@ -24,11 +24,6 @@ module.exports = WebpackConfig({
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'build')
-  },
-  watchOptions: {
-    aggregateTimeout: 300,
-    poll: 1000,
-    ignored: /node_modules/
   },
   module: {
     rules: [{
@@ -57,5 +52,7 @@ module.exports = WebpackConfig({
       }
     ]
   },
-  plugins: [new HtmlWebpackPlugin(), extractLess]
+  plugins: [new HtmlWebpackPlugin({
+    title: 'Github'
+  }), extractLess]
 })

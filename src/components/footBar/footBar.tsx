@@ -6,7 +6,7 @@ export const FootBar = () => {
   return (
     <nav className="footBar">
       <Anchor className="footBar_a" href="/profile">profile</Anchor>
-      <Anchor className="footBar_a" href="/repository">repository</Anchor>
+      <Anchor className="footBar_a" href="/repo">repository</Anchor>
       <Anchor className="footBar_a" href="/news">news</Anchor>
     </nav>
   )

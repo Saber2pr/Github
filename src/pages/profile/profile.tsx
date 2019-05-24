@@ -17,7 +17,7 @@ const useUserId = (userId = 'saber2pr') => {
   return userInfor
 }
 
-export const Profile = ({ userId = 'saber2pr' }: Profile) => {
+export const Profile = ({ userId }: Profile) => {
   const { login, name, company, blog, location, bio, avatar_url } = useUserId(
     userId
   )
@@ -29,19 +29,25 @@ export const Profile = ({ userId = 'saber2pr' }: Profile) => {
           <dd>
             <img className="avatar" src={avatar_url} alt={login} />
           </dd>
+
           <dt>
             <h1>{name}</h1>
           </dt>
+
           <dd>{bio}</dd>
+
           <dd>
             <h2 className="login">{login}</h2>
           </dd>
+
           <dd>
             <Svg.Company /> {company}
           </dd>
+
           <dd>
             <Svg.Location /> {location}
           </dd>
+
           <dd>
             <Svg.Blog />
             <a className="blog" href={blog}>

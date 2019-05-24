@@ -13,7 +13,7 @@ Config.ReactDOM = ReactDOM
 Config.container = container
 
 Router({
-  '/': '/profile',
+  '/': '/news',
   '/profile': () => <Profile />,
   '/repository': () => <Repository />,
   '/news': () => <News />

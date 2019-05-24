@@ -25,7 +25,7 @@ export const Profile = ({ userId = 'saber2pr' }: Profile) => {
     <>
       <header>Profile</header>
       <main className="profile">
-        <dl>
+        <dl className="table">
           <dd>
             <img className="avatar" src={avatar_url} alt={login} />
           </dd>

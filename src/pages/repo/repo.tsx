@@ -28,7 +28,7 @@ export const Repo = () => {
   return (
     <>
       <header>
-        Repository
+        <span className="title">Repository</span>
         <Anchor className="right" href="/find">
           <Svg.Search />
         </Anchor>

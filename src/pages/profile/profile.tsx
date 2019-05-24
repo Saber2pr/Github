@@ -21,7 +21,7 @@ export const Profile = () => {
   return (
     <>
       <header>
-        Profile
+        <span className="title">Profile</span>
         <Anchor className="right" href="/menu">
           <Svg.Menu />
         </Anchor>

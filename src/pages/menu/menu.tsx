@@ -37,7 +37,9 @@ export const Menu = () => {
 
   return (
     <>
-      <header>Menu</header>
+      <header>
+        <span className="title">Menu</span>
+      </header>
       <main className="menu">
         <ul>
           <li>Input your github id: </li>

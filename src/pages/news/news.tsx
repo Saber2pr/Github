@@ -17,7 +17,9 @@ export const News = () => {
   const events = useUserEvents(store.getState().userId)
   return (
     <>
-      <header>News</header>
+      <header>
+        <span className="title">News</span>
+      </header>
       <main className="news">
         <ul className="list">
           {events.map(event => (

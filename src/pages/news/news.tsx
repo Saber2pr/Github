@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { FootBar } from '../../components/footBar/footBar'
 import { Events } from '@saber2pr/types-github-api'
 import './news.less'
 import { Request } from '../../request'
 import { store } from '../../store/store'
+import { RoutesBar } from '../../components/routesBar/routesBar'
 
 const useUserEvents = (userId: string = 'saber2pr') => {
   const [events, setEvents] = useState<Events>([])
@@ -38,7 +38,7 @@ export const News = () => {
         </ul>
       </main>
       <footer>
-        <FootBar />
+        <RoutesBar />
       </footer>
     </>
   )

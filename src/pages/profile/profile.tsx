@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Request } from '../../request'
 import { User } from '@saber2pr/types-github-api'
-import { FootBar } from '../../components/footBar/footBar'
 import './profile.less'
 import * as Svg from '../../components/svg'
 import { Anchor } from '@saber2pr/router'
 import { store } from '../../store/store'
+import { RoutesBar } from '../../components/routesBar/routesBar'
 
 const useUserId = (userId = 'saber2pr') => {
   const [userInfor, setUserInfor] = useState<User>({} as User)
@@ -60,7 +60,7 @@ export const Profile = () => {
         </dl>
       </main>
       <footer>
-        <FootBar />
+        <RoutesBar />
       </footer>
     </>
   )

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { FootBar } from '../../components/footBar/footBar'
 import { Request } from '../../request'
 import { Repositories } from '@saber2pr/types-github-api'
 import './repo.less'
@@ -7,6 +6,8 @@ import { useIndex } from '../../hooks'
 import { Anchor } from '@saber2pr/router'
 import * as Svg from '../../components/svg'
 import { store } from '../../store/store'
+import { RoutesBar } from '../../components/routesBar/routesBar'
+import { IndexBar } from '../../components/indexBar/indexBar'
 
 const useUserRopesPage = (
   userId = 'saber2pr',
@@ -30,7 +31,7 @@ export const Repo = () => {
     <>
       <header>
         Repository
-        <Anchor className="right" href="/findRepo">
+        <Anchor className="right" href="/find">
           <Svg.Search />
         </Anchor>
       </header>
@@ -41,7 +42,9 @@ export const Repo = () => {
             <li className="item" key={repo.id}>
               <dl>
                 <dt>
-                  <Svg.Book />
+                  <span className="svg_book">
+                    <Svg.Book />
+                  </span>
                   <a href={repo.html_url}>
                     <strong>{repo.name}</strong>
                   </a>
@@ -52,14 +55,11 @@ export const Repo = () => {
           ))}
         </ul>
 
-        <nav>
-          <button onClick={last}>last</button>
-          <button onClick={next}>next</button>
-        </nav>
+        <IndexBar last={last} next={next} />
       </main>
 
       <footer>
-        <FootBar />
+        <RoutesBar />
       </footer>
     </>
   )

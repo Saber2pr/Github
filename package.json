@@ -1,13 +1,13 @@
 {
   "name": "github",
   "version": "1.0.0",
-  "description": "",
+  "description": "> have you known the github api? use it to create a react app.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack && sh ./scripts/cp.sh"
   },
-  "author": "",
+  "author": "saber2pr",
   "license": "ISC",
   "devDependencies": {
     "@saber2pr/webpack-configer": "0.0.5",

@@ -3,11 +3,9 @@ import { Search, Repository } from '@saber2pr/types-github-api'
 import { useIndex } from '../../hooks'
 import { Request } from '../../request'
 import { push } from '@saber2pr/router'
-import * as Svg from '../../components/svg'
-import './find.less'
-import { RoutesBar } from '../../components/routesBar/routesBar'
-import { IndexBar } from '../../components/indexBar/indexBar'
+import { Svg, RoutesBar, IndexBar } from '../../components'
 import { throttle } from '../../utils/throttle'
+import './find.less'
 
 const useSearch = (
   page: number

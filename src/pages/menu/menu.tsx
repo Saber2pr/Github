@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import { store } from '../../store/store'
 import * as A from '../../store/actions'
 import { push } from '@saber2pr/router'
-import { RoutesBar } from '../../components/routesBar/routesBar'
+import { RoutesBar } from '../../components'
 import './menu.less'
 
 const useUpdateUser = (): [

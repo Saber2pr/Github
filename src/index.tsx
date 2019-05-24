@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.less'
-import { Profile } from './pages/profile/profile'
 import { Router, Config } from '@saber2pr/router'
-import { News, Repo, Find, Menu } from './pages'
+import { News, Repo, Find, Menu, Profile } from './pages'
+import './index.less'
 
 const container = document.createElement('div')
 document.body.append(container)

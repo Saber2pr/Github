@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Request } from '../../request'
 import { Repositories } from '@saber2pr/types-github-api'
-import './repo.less'
 import { useIndex } from '../../hooks'
 import { Anchor } from '@saber2pr/router'
-import * as Svg from '../../components/svg'
 import { store } from '../../store/store'
-import { RoutesBar } from '../../components/routesBar/routesBar'
-import { IndexBar } from '../../components/indexBar/indexBar'
+import { RoutesBar, IndexBar, Svg } from '../../components'
+import './repo.less'
 
 const useUserRopesPage = (
   userId = 'saber2pr',

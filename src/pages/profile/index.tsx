@@ -3,8 +3,8 @@ import { Request } from '../../request'
 import { User } from '@saber2pr/types-github-api'
 import { Svg, RoutesBar } from '../../components'
 import { Anchor } from '@saber2pr/router'
-import { store } from '../../store/store'
-import './profile.less'
+import { store } from '../../store'
+import './style.less'
 
 const useUserId = (userId = 'saber2pr') => {
   const [userInfor, setUserInfor] = useState<User>({} as User)

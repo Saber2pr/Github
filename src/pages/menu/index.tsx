@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { store } from '../../store/store'
+import { store } from '../../store'
 import * as A from '../../store/actions'
 import { push } from '@saber2pr/router'
 import { RoutesBar } from '../../components'
-import './menu.less'
+import './style.less'
 
 const useUpdateUser = (): [
   React.MutableRefObject<HTMLInputElement>,
@@ -43,6 +43,7 @@ export const Menu = () => {
       <main className="menu">
         <ul>
           <li>Input your github id: </li>
+
           <li>
             <form onSubmit={onSubmit}>
               userId:

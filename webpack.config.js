@@ -2,7 +2,7 @@
  * @Author: saber2pr
  * @Date: 2019-05-22 20:20:01
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-05-24 21:11:24
+ * @Last Modified time: 2019-05-25 17:12:16
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -17,7 +17,7 @@ const {
 } = require('@saber2pr/webpack-configer')
 
 module.exports = WebpackConfig({
-  mode: 'production',
+  mode: 'development',
   entry: './src/index.tsx',
   resolve: {
     extensions: ['.js', '.ts', '.tsx']

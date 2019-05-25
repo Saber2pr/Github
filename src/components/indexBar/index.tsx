@@ -1,5 +1,5 @@
 import React from 'react'
-import './indexBar.less'
+import './style.less'
 
 export interface IndexBar {
   last: () => any

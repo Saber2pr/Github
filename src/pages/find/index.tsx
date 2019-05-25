@@ -5,7 +5,7 @@ import { Request } from '../../request'
 import { push } from '@saber2pr/router'
 import { Svg, RoutesBar, IndexBar } from '../../components'
 import { throttle } from '../../utils/throttle'
-import './find.less'
+import './style.less'
 
 const useSearch = (
   page: number

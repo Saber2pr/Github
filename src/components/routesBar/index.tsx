@@ -1,6 +1,6 @@
 import React from 'react'
 import { Anchor } from '@saber2pr/router'
-import './routesBar.less'
+import './style.less'
 
 export const RoutesBar = () => {
   return (

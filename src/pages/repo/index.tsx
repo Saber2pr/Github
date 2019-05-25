@@ -3,9 +3,9 @@ import { Request } from '../../request'
 import { Repositories } from '@saber2pr/types-github-api'
 import { useIndex } from '../../hooks'
 import { Anchor } from '@saber2pr/router'
-import { store } from '../../store/store'
+import { store } from '../../store'
 import { RoutesBar, IndexBar, Svg } from '../../components'
-import './repo.less'
+import './style.less'
 
 const useUserRopesPage = (
   userId = 'saber2pr',

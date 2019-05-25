@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Events } from '@saber2pr/types-github-api'
 import { Request } from '../../request'
-import { store } from '../../store/store'
+import { store } from '../../store'
 import { RoutesBar } from '../../components'
-import './news.less'
+import './style.less'
 
 const useUserEvents = (userId: string = 'saber2pr') => {
   const [events, setEvents] = useState<Events>([])

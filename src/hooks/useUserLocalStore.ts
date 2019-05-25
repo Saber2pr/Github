@@ -7,11 +7,13 @@ export const useUserIdHistory = (userId: string): Array<string> => {
   useEffect(() => {
     const history = Local.getUserIdHistory()
 
-    if (history && !history.includes(userId)) {
-      setHistory(history.concat(userId))
-
+    if (history) {
+      history.includes(userId) || Local.saveUserId(userId)
+    } else {
       Local.saveUserId(userId)
     }
+
+    setHistory(history || [userId])
   }, [userId])
 
   return userIdHistory

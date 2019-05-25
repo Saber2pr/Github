@@ -11,7 +11,7 @@ Config.render = ReactDOM.render
 Config.container = container
 
 Router({
-  '/': '/profile',
+  '/': '/menu',
   '/profile': () => <Profile />,
   '/repo': () => <Repo />,
   '/news': () => <News />,

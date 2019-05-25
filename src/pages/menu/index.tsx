@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import { store } from '../../store'
 import * as A from '../../store/actions'
 import { push } from '@saber2pr/router'
-import { RoutesBar } from '../../components'
+import { RoutesBar, UserDataHistory } from '../../components'
 import './style.less'
 
 const useUpdateUser = (): [
@@ -52,7 +52,9 @@ export const Menu = () => {
                 ref={userIdInput}
                 autoFocus
                 placeholder={current}
+                list="userIdHistory"
               />
+              <UserDataHistory userId={current}/>
               <button>update</button>
             </form>
           </li>

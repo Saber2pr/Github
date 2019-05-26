@@ -4,6 +4,7 @@ import { store } from '../../store'
 import { useUserLogin, useUserIdHistory } from '../../hooks'
 import { Local } from '../../local'
 import { Anchor } from '@saber2pr/router'
+import { Config } from '../../config'
 import './style.less'
 
 export const Login = () => {
@@ -70,7 +71,7 @@ export const Login = () => {
             stored in localStorage by base64.
           </dd>
 
-          <dd className="message">v0.0.1 by saber2pr</dd>
+          <dd className="message">{Config.version} by saber2pr</dd>
 
           <dd className="message">
             <button onClick={() => Local.clear()}>clear localStorage</button>

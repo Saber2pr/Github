@@ -7,7 +7,7 @@ export const timeDelta = (time1: string, time2: string) => {
   const days = Math.round(hours / 24)
 
   if (days > 0) {
-    return `${days}days, ${hours} hours ago.`
+    return `${days}days ago.`
   } else {
     return `${hours} hours ago.`
   }

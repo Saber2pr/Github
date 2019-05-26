@@ -1,10 +1,10 @@
 import React from 'react'
-import { RoutesBar, InputHistory } from '../../components'
+import { InputHistory } from '../../components'
 import { store } from '../../store'
 import { useUserLogin, useUserIdHistory } from '../../hooks'
 import { Local } from '../../local'
-import './style.less'
 import { Anchor } from '@saber2pr/router'
+import './style.less'
 
 export const Login = () => {
   const userId = store.getState().userId
@@ -69,6 +69,8 @@ export const Login = () => {
             You will submited under https, the username and password will be
             stored in localStorage by base64.
           </dd>
+
+          <dd className="message">v0.0.1 by saber2pr</dd>
 
           <dd className="message">
             <button onClick={() => Local.clear()}>clear localStorage</button>

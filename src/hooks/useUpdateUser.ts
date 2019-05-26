@@ -1,9 +1,11 @@
 import { useRef, useState, useEffect } from 'react'
-import { store } from '../store'
+import { store, updateUser } from '../store'
+import { push } from '@saber2pr/router'
 
-export const useUpdateUser = (): [
+export const useUserUpdate = (): [
   React.MutableRefObject<HTMLInputElement>,
-  string
+  string,
+  (event: React.FormEvent<HTMLFormElement>) => void
 ] => {
   const userIdInput = useRef<HTMLInputElement>()
 
@@ -15,5 +17,16 @@ export const useUpdateUser = (): [
     })
   )
 
-  return [userIdInput, current]
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (userIdInput.current.value) {
+      store.dispatch<updateUser>({
+        type: 'updateUser',
+        payload: userIdInput.current.value
+      })
+      push('/')
+    }
+  }
+
+  return [userIdInput, current, onSubmit]
 }

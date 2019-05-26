@@ -6,7 +6,9 @@ export const useUserEvents = (userId: string) => {
   const [events, setEvents] = useState<Events>([])
 
   useEffect(() => {
-    Request.Github.getUserEvents(userId).then(setEvents)
+    Request.Github.getUserEvents(userId)
+      .then(setEvents)
+      .catch(_ => _)
   }, [userId])
 
   return events

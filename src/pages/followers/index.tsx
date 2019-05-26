@@ -10,7 +10,7 @@ export const Followers = () => {
   return (
     <>
       <header>
-        <span className="title">UserList</span>
+        <span className="title">Followers</span>
       </header>
 
       <main className="userList">

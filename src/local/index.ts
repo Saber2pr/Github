@@ -41,4 +41,8 @@ export namespace Local {
 
     return JSON.parse(value) as UserAuth
   }
+
+  export function clear() {
+    localStorage.clear()
+  }
 }

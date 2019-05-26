@@ -6,7 +6,9 @@ export const useUserInfor = (userId: string) => {
   const [userInfor, setUserInfor] = useState<User>({} as User)
 
   useEffect(() => {
-    Request.Github.getUserInfor(userId).then(setUserInfor)
+    Request.Github.getUserInfor(userId)
+      .then(setUserInfor)
+      .catch(_ => _)
   }, [userId])
 
   return userInfor

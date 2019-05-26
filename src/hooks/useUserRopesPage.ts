@@ -12,6 +12,7 @@ export const useUserRopesPage = (
     Request.Github.getUserReposPage(userId, page)
       .then(setRepos)
       .then(() => window.scroll(0, 0))
+      .catch(_ => _)
   }, [userId, page])
 
   return repos

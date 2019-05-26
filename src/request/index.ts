@@ -1,8 +1,9 @@
 import * as github from './github'
 import axios from 'axios'
 import { Local } from '../local'
-import { store } from '../store'
+import { store, throwError } from '../store'
 import { Base64 } from '../utils'
+import { push } from '@saber2pr/router'
 
 export namespace Request {
   export const Github = github
@@ -21,3 +22,23 @@ axios.interceptors.request.use(config => {
 
   return config
 })
+
+axios.interceptors.response.use(
+  _ => _,
+  err => {
+    const status = err.response.status
+    if (status === 401) {
+      push('/login')
+    } else {
+      store.dispatch<throwError>({
+        type: 'throwError',
+        payload: {
+          status: status,
+          statusText: err.response.statusText,
+          message: err.response.data.message
+        }
+      })
+      push('/error')
+    }
+  }
+)

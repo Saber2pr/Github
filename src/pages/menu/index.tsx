@@ -1,24 +1,11 @@
 import React from 'react'
-import { store } from '../../store'
-import * as A from '../../store/actions'
 import { RoutesBar, InputHistory } from '../../components'
-import { useUpdateUser, useUserIdHistory } from '../../hooks'
-import { push } from '@saber2pr/router'
+import { useUserUpdate, useUserIdHistory } from '../../hooks'
+import { Anchor } from '@saber2pr/router'
 import './style.less'
 
 export const Menu = () => {
-  const [userIdInput, userId] = useUpdateUser()
-
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    if (userIdInput.current.value) {
-      store.dispatch<A.updateUser>({
-        type: 'updateUser',
-        payload: userIdInput.current.value
-      })
-      push('/')
-    }
-  }
+  const [userIdInput, userId, onSubmit] = useUserUpdate()
 
   const history = useUserIdHistory(userId)
 
@@ -47,6 +34,11 @@ export const Menu = () => {
           </li>
 
           <li>current: {userId}</li>
+          <Anchor href="/login">
+            <strong>
+              <u>Generate Authorization</u>
+            </strong>
+          </Anchor>
         </ul>
       </main>
       <footer>

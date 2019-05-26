@@ -1,21 +1,28 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { Local } from '../local'
 import { push } from '@saber2pr/router'
+import { store, updateUser } from '../store'
 
 export const useUserLogin = (): [
   React.MutableRefObject<HTMLInputElement>,
-  React.MutableRefObject<HTMLInputElement>
+  React.MutableRefObject<HTMLInputElement>,
+  (event: React.FormEvent<HTMLFormElement>) => void
 ] => {
   const usernameInput = useRef<HTMLInputElement>()
   const passwordInput = useRef<HTMLInputElement>()
 
-  useEffect(() => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
     const username = usernameInput.current.value
     const password = passwordInput.current.value
 
-    Local.saveUserAuth(username, password)
-    push('/')
-  })
+    if (username && password) {
+      Local.saveUserAuth(username, password)
+      store.dispatch<updateUser>({ type: 'updateUser', payload: username })
+      push('/')
+    }
+  }
 
-  return [usernameInput, passwordInput]
+  return [usernameInput, passwordInput, onSubmit]
 }

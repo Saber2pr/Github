@@ -13,3 +13,12 @@ export const userId: Reducer<State['userId'], A.updateUser> = (
       return state
   }
 }
+
+export const error: Reducer<State['error'], A.throwError> = (state, action) => {
+  switch (action.type) {
+    case 'throwError':
+      return action.payload
+    default:
+      return state
+  }
+}

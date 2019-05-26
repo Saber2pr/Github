@@ -1,13 +1,17 @@
 import React from 'react'
-import { RoutesBar } from '../../components'
+import { RoutesBar, InputHistory } from '../../components'
 import { store } from '../../store'
+import { useUserLogin, useUserIdHistory } from '../../hooks'
+import { Local } from '../../local'
 import './style.less'
-import { useUserLogin } from '../../hooks'
+import { Anchor } from '@saber2pr/router'
 
 export const Login = () => {
   const userId = store.getState().userId
 
-  const [usernameInput, passwordInput] = useUserLogin()
+  const [usernameInput, passwordInput, onSubmit] = useUserLogin()
+
+  const history = useUserIdHistory(userId)
 
   return (
     <>
@@ -22,26 +26,36 @@ export const Login = () => {
           </dt>
 
           <dd className="line">
-            <form>
+            <form onSubmit={onSubmit}>
               <table className="formTable">
-                <tr>
-                  <th>userId</th>
-                  <th>
-                    <input
-                      type="text"
-                      defaultValue={userId}
-                      ref={usernameInput}
-                    />
-                  </th>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>userId</td>
+                    <td>
+                      <input
+                        type="text"
+                        defaultValue={userId}
+                        ref={usernameInput}
+                        list="userAuthHistory"
+                      />
+                      <InputHistory
+                        listId="userAuthHistory"
+                        history={history}
+                      />
+                    </td>
+                  </tr>
 
-                <tr>
-                  <th>password</th>
-                  <th>
-                    <input type="text" autoFocus ref={passwordInput} />
-                  </th>
-                </tr>
+                  <tr>
+                    <td>password</td>
+                    <td>
+                      <input type="password" autoFocus ref={passwordInput} />
+                    </td>
+                  </tr>
+                </tbody>
               </table>
+
+              <button>submit</button>
+              <Anchor href="/">cancel</Anchor>
             </form>
           </dd>
 
@@ -57,14 +71,10 @@ export const Login = () => {
           </dd>
 
           <dd className="message">
-            <button>clear localStorage</button>
+            <button onClick={() => Local.clear()}>clear localStorage</button>
           </dd>
         </dl>
       </main>
-
-      <footer>
-        <RoutesBar />
-      </footer>
     </>
   )
 }

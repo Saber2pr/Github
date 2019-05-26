@@ -10,7 +10,7 @@ export const Following = () => {
   return (
     <>
       <header>
-        <span className="title">UserList</span>
+        <span className="title">Following</span>
       </header>
 
       <main className="userList">

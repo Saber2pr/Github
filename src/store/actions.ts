@@ -5,3 +5,8 @@ interface PayloadAction<T, V> extends Action<T> {
 }
 
 export type updateUser = PayloadAction<'updateUser', string>
+
+export type throwError = PayloadAction<
+  'throwError',
+  { status: number; statusText: string; message: string }
+>

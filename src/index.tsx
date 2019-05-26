@@ -9,7 +9,8 @@ import {
   Profile,
   Followers,
   Following,
-  Login
+  Login,
+  Error
 } from './pages'
 import './index.less'
 
@@ -20,7 +21,7 @@ Config.render = ReactDOM.render
 Config.container = container
 
 Router({
-  '/': '/login',
+  '/': '/profile',
   '/profile': () => <Profile />,
   '/repo': () => <Repo />,
   '/news': () => <News />,
@@ -28,5 +29,6 @@ Router({
   '/menu': () => <Menu />,
   '/followers': () => <Followers />,
   '/following': () => <Following />,
-  '/login': () => <Login />
+  '/login': () => <Login />,
+  '/error': () => <Error />
 })

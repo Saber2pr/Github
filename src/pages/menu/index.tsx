@@ -1,29 +1,13 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React from 'react'
 import { store } from '../../store'
 import * as A from '../../store/actions'
+import { RoutesBar, InputHistory } from '../../components'
+import { useUpdateUser, useUserIdHistory } from '../../hooks'
 import { push } from '@saber2pr/router'
-import { RoutesBar, UserDataHistory } from '../../components'
 import './style.less'
 
-const useUpdateUser = (): [
-  React.MutableRefObject<HTMLInputElement>,
-  string
-] => {
-  const userIdInput = useRef<HTMLInputElement>()
-
-  const [current, setUserId] = useState(store.getState().userId)
-  useEffect(() =>
-    store.subscribe(() => {
-      setUserId(store.getState().userId)
-      push('/')
-    })
-  )
-
-  return [userIdInput, current]
-}
-
 export const Menu = () => {
-  const [userIdInput, current] = useUpdateUser()
+  const [userIdInput, userId] = useUpdateUser()
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -32,8 +16,11 @@ export const Menu = () => {
         type: 'updateUser',
         payload: userIdInput.current.value
       })
+      push('/')
     }
   }
+
+  const history = useUserIdHistory(userId)
 
   return (
     <>
@@ -42,7 +29,7 @@ export const Menu = () => {
       </header>
       <main className="menu">
         <ul>
-          <li>Input your github id: </li>
+          <li>Input a github id: </li>
 
           <li>
             <form onSubmit={onSubmit}>
@@ -51,15 +38,15 @@ export const Menu = () => {
                 type="text"
                 ref={userIdInput}
                 autoFocus
-                placeholder={current}
+                placeholder={userId}
                 list="userIdHistory"
               />
-              <UserDataHistory userId={current}/>
+              <InputHistory listId="userIdHistory" history={history} />
               <button>update</button>
             </form>
           </li>
 
-          <li>current: {current}</li>
+          <li>current: {userId}</li>
         </ul>
       </main>
       <footer>

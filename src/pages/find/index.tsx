@@ -1,38 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { Search, Repository } from '@saber2pr/types-github-api'
-import { useIndex } from '../../hooks'
-import { Request } from '../../request'
+import React from 'react'
+import { useIndex, useSearch } from '../../hooks'
 import { push } from '@saber2pr/router'
 import { Svg, RoutesBar, IndexBar } from '../../components'
-import { throttle } from '../../utils/throttle'
+import { throttle } from '../../utils'
 import './style.less'
-
-const useSearch = (
-  page: number
-): [
-  React.MutableRefObject<HTMLInputElement>,
-  Search<Repository>,
-  VoidFunction
-] => {
-  const [result, setRepos] = useState<Search<Repository>>({
-    items: []
-  } as Search<Repository>)
-
-  const searchInput = useRef<HTMLInputElement>()
-
-  const search = () => {
-    const query = searchInput.current.value
-    if (query) {
-      Request.Github.searchRepos(query, page)
-        .then(result => setRepos(result))
-        .then(() => window.scroll(0, 0))
-    }
-  }
-
-  useEffect(() => search(), [page])
-
-  return [searchInput, result, search]
-}
 
 export const Find = () => {
   const [index, last, next] = useIndex()

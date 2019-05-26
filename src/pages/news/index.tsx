@@ -1,17 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { Events } from '@saber2pr/types-github-api'
-import { Request } from '../../request'
+import React from 'react'
 import { store } from '../../store'
-import { RoutesBar } from '../../components'
+import { RoutesBar, CountLabel } from '../../components'
+import { useUserEvents } from '../../hooks'
 import './style.less'
-
-const useUserEvents = (userId: string = 'saber2pr') => {
-  const [events, setEvents] = useState<Events>([])
-  useEffect(() => {
-    Request.Github.getUserEvents(userId).then(setEvents)
-  }, [userId])
-  return events
-}
+import { timeDelta } from '../../utils'
 
 export const News = () => {
   const events = useUserEvents(store.getState().userId)
@@ -33,6 +25,14 @@ export const News = () => {
                   <a href={'https://github.com/' + event.repo.name}>
                     {event.repo.name}
                   </a>
+                </dd>
+                <dd>
+                  <CountLabel
+                    count={timeDelta(
+                      new Date().toISOString(),
+                      event.created_at
+                    )}
+                  />
                 </dd>
               </dl>
             </li>

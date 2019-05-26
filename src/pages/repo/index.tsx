@@ -1,26 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { Request } from '../../request'
-import { Repositories } from '@saber2pr/types-github-api'
-import { useIndex } from '../../hooks'
+import React from 'react'
+import { useIndex, useUserRopesPage } from '../../hooks'
 import { Anchor } from '@saber2pr/router'
 import { store } from '../../store'
 import { RoutesBar, IndexBar, Svg } from '../../components'
 import './style.less'
-
-const useUserRopesPage = (
-  userId = 'saber2pr',
-  page: number = 1
-): Repositories => {
-  const [repos, setRepos] = useState<Repositories>([])
-
-  useEffect(() => {
-    Request.Github.getUserReposPage(userId, page)
-      .then(setRepos)
-      .then(() => window.scroll(0, 0))
-  }, [userId, page])
-
-  return repos
-}
 
 export const Repo = () => {
   const [index, last, next] = useIndex()

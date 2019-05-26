@@ -1,23 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import { Request } from '../../request'
-import { User } from '@saber2pr/types-github-api'
-import { Svg, RoutesBar } from '../../components'
+import React from 'react'
+import { Svg, RoutesBar, CountLabel } from '../../components'
 import { Anchor } from '@saber2pr/router'
 import { store } from '../../store'
+import { useUserInfor } from '../../hooks'
 import './style.less'
 
-const useUserId = (userId = 'saber2pr') => {
-  const [userInfor, setUserInfor] = useState<User>({} as User)
-  useEffect(() => {
-    Request.Github.getUserInfor(userId).then(setUserInfor)
-  }, [userId])
-  return userInfor
-}
-
 export const Profile = () => {
-  const { login, name, company, blog, location, bio, avatar_url } = useUserId(
-    store.getState().userId
-  )
+  const userId = store.getState().userId
+
+  const {
+    login,
+    name,
+    company,
+    blog,
+    location,
+    bio,
+    avatar_url,
+    followers,
+    following,
+    created_at,
+    updated_at
+  } = useUserInfor(userId)
+
   return (
     <>
       <header>
@@ -56,6 +60,18 @@ export const Profile = () => {
               {blog}
             </a>
           </dd>
+
+          <dd>
+            <Anchor href="/followers">Followers</Anchor>
+            <CountLabel count={String(followers)} />
+          </dd>
+          <dd>
+            <Anchor href="/following">Following</Anchor>
+            <CountLabel count={String(following)} />
+          </dd>
+
+          <dd>注册时间{new Date(created_at).toLocaleString()}</dd>
+          <dd>最近登录{new Date(updated_at).toLocaleString()}</dd>
         </dl>
       </main>
       <footer>

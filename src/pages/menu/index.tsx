@@ -24,7 +24,6 @@ export const Menu = () => {
               <input
                 type="text"
                 ref={userIdInput}
-                autoFocus
                 placeholder={userId}
                 list="userIdHistory"
               />

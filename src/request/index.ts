@@ -1,7 +1,7 @@
 import * as github from './github'
 import axios from 'axios'
 import { Local } from '../local'
-import { store, throwError } from '../store'
+import { store, A } from '../store'
 import { Base64 } from '../utils'
 import { push } from '@saber2pr/router'
 
@@ -30,7 +30,7 @@ axios.interceptors.response.use(
     if (status === 401) {
       push('/login')
     } else {
-      store.dispatch<throwError>({
+      store.dispatch<A.throwError>({
         type: 'throwError',
         payload: {
           status: status,

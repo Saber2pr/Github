@@ -10,7 +10,8 @@ import {
   Followers,
   Following,
   Login,
-  Error
+  Error,
+  UsersFrom
 } from './pages'
 import './index.less'
 
@@ -30,5 +31,6 @@ Router({
   '/followers': () => <Followers />,
   '/following': () => <Following />,
   '/login': () => <Login />,
-  '/error': () => <Error />
+  '/error': () => <Error />,
+  '/usersFrom': () => <UsersFrom />
 })

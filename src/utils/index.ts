@@ -1,3 +1,3 @@
 export * from './base64'
 export * from './throttle'
-export * from './subtime'
+export * from './timeDelta'

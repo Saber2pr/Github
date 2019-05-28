@@ -10,6 +10,9 @@ import './style.less'
 export const Login = () => {
   const userId = store.getState().userId
 
+  const UserAuth = Local.getUserAuth() || {}
+  const password = UserAuth[userId] || ''
+
   const [usernameInput, passwordInput, onSubmit] = useUserLogin()
 
   const history = useUserIdHistory(userId)
@@ -49,7 +52,11 @@ export const Login = () => {
                   <tr>
                     <td>password</td>
                     <td>
-                      <input type="password" autoFocus ref={passwordInput} />
+                      <input
+                        type="password"
+                        ref={passwordInput}
+                        defaultValue={password}
+                      />
                     </td>
                   </tr>
                 </tbody>

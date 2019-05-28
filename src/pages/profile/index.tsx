@@ -1,5 +1,5 @@
 import React from 'react'
-import { Svg, RoutesBar, CountLabel } from '../../components'
+import { Svg, RoutesBar, Label } from '../../components'
 import { Anchor } from '@saber2pr/router'
 import { store } from '../../store'
 import { useUserInfor } from '../../hooks'
@@ -63,11 +63,11 @@ export const Profile = () => {
 
           <dd>
             <Anchor href="/followers">Followers</Anchor>
-            <CountLabel count={String(followers)} />
+            <Label>{followers}</Label>
           </dd>
           <dd>
             <Anchor href="/following">Following</Anchor>
-            <CountLabel count={String(following)} />
+            <Label>{following}</Label>
           </dd>
 
           <dd>注册时间{new Date(created_at).toLocaleString()}</dd>

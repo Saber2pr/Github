@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import { store, updateUser } from '../store'
+import { store, A } from '../store'
 import { push } from '@saber2pr/router'
 
 export const useUserUpdate = (): [
@@ -20,7 +20,7 @@ export const useUserUpdate = (): [
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (userIdInput.current.value) {
-      store.dispatch<updateUser>({
+      store.dispatch<A.updateUser>({
         type: 'updateUser',
         payload: userIdInput.current.value
       })

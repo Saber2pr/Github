@@ -5,68 +5,83 @@ import {
   Repositories,
   Events,
   Search,
-  Repository,
-  Users
+  Users,
+  Repository
 } from '@saber2pr/types-github-api'
 
-export async function getUserInfor(userId: string) {
-  const userInfor = await axios.get<User>(GitHubAPI.users + userId)
-  return userInfor.data
-}
+export const getUserInfor = async (userId: string) =>
+  await getPage<User>(`${GitHubAPI.users}/${userId}`)
 
-export async function getUserReposPage(
+export const getUserReposPage = async (
   userId: string,
   page: number = 1,
-  perPage: number = 10
-) {
-  const repos = await axios.get<Repositories>(
-    GitHubAPI.users + userId + `/repos?page=${page}&per_page=${perPage}`
+  per_page: number = 10
+) =>
+  await getPage<Repositories>(
+    `${GitHubAPI.users}/${userId}/repos`,
+    page,
+    per_page
   )
-  return repos.data
-}
 
-export async function getUserEvents(userId: string) {
-  const events = await axios.get<Events>(GitHubAPI.users + userId + '/events')
-  return events.data
-}
-
-export async function searchRepos(
-  repoName: string,
+export const getUserEvents = async (
+  userId: string,
   page: number = 1,
-  perPage: number = 10
-) {
-  const result = await axios.get<Search<Repository>>(
-    GitHubAPI.search +
-      `repositories?q=${repoName}&page=${page}&per_page=${perPage}`
+  per_page: number = 10
+) =>
+  await getPage<Events>(`${GitHubAPI.users}/${userId}/events`, page, per_page)
+
+export const searchRepos = async (
+  q: string,
+  page: number = 1,
+  per_page: number = 10
+) =>
+  await getPage<Search<Repository>>(
+    `${GitHubAPI.search}/repositories`,
+    page,
+    per_page,
+    {
+      q
+    }
   )
+
+export const getUserFollowersPage = async (
+  userId: string,
+  page: number = 1,
+  per_page: number = 10
+) =>
+  await getPage<Users>(`${GitHubAPI.users}/${userId}/followers`, page, per_page)
+
+export const getUserFollowingPage = async (
+  userId: string,
+  page: number = 1,
+  per_page: number = 10
+) =>
+  await getPage<Users>(`${GitHubAPI.users}/${userId}/following`, page, per_page)
+
+export const getUserStarred = async (
+  userId: string,
+  page: number = 1,
+  per_page: number = 10
+) =>
+  await getPage<Repositories>(
+    `${GitHubAPI.users}/${userId}/starred`,
+    page,
+    per_page
+  )
+
+export async function getPage<T>(
+  url: string,
+  page: number = 1,
+  per_page: number = 10,
+  extraParams: Object = {}
+) {
+  const result = await axios.get<T>(url, {
+    params: {
+      page,
+      per_page,
+      ...extraParams
+    }
+  })
+
   return result.data
-}
-
-export async function getUserFollowersPage(
-  userId: string,
-  page: number = 1,
-  perPage: number = 10
-) {
-  const followers = await axios.get<Users>(
-    GitHubAPI.users + userId + `/followers?page=${page}&per_page=${perPage}`
-  )
-  return followers.data
-}
-
-export async function getUserFollowingPage(
-  userId: string,
-  page: number = 1,
-  perPage: number = 10
-) {
-  const following = await axios.get<Users>(
-    GitHubAPI.users + userId + `/following?page=${page}&per_page=${perPage}`
-  )
-  return following.data
-}
-
-export async function getUserStarred(userId: string) {
-  const starred = await axios.get<Repositories>(
-    GitHubAPI.users + userId + '/starred'
-  )
-  return starred.data
 }

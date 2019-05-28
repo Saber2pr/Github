@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { Local } from '../local'
 import { push } from '@saber2pr/router'
-import { store, updateUser } from '../store'
+import { store, A } from '../store'
 
 export const useUserLogin = (): [
   React.MutableRefObject<HTMLInputElement>,
@@ -19,7 +19,7 @@ export const useUserLogin = (): [
 
     if (username && password) {
       Local.saveUserAuth(username, password)
-      store.dispatch<updateUser>({ type: 'updateUser', payload: username })
+      store.dispatch<A.updateUser>({ type: 'updateUser', payload: username })
       push('/')
     }
   }

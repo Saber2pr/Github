@@ -1,9 +1,21 @@
 import React from 'react'
 import { useIndex, useUserRopesPage } from '../../hooks'
-import { Anchor } from '@saber2pr/router'
-import { store } from '../../store'
-import { RoutesBar, IndexBar, Svg } from '../../components'
+import { Anchor, push } from '@saber2pr/router'
+import { store, A } from '../../store'
+import { RoutesBar, IndexBar, Svg, Label } from '../../components'
 import './style.less'
+
+const gotoUsersFrom = (title: string, url: string) => () => {
+  store.dispatch<A.updateUserForm>({
+    type: 'updateUserForm',
+    payload: {
+      title,
+      url
+    }
+  })
+
+  push('/usersFrom')
+}
 
 export const Repo = () => {
   const [index, last, next] = useIndex()
@@ -28,9 +40,24 @@ export const Repo = () => {
                   </span>
                   <a href={repo.html_url}>
                     <strong>{repo.name}</strong>
+                    {repo.fork && <Label>forked</Label>}
                   </a>
                 </dt>
                 <dd>{repo.description}</dd>
+
+                <dd>
+                  <nav>
+                    <Anchor
+                      onClick={gotoUsersFrom('Stargazers', repo.stargazers_url)}
+                    >
+                      <u>stars</u>
+                      <Label>{repo.stargazers_count}</Label>
+                    </Anchor>
+                    <Anchor>
+                      forks<Label>{repo.forks_count}</Label>
+                    </Anchor>
+                  </nav>
+                </dd>
               </dl>
             </li>
           ))}

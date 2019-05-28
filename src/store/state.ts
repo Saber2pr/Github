@@ -5,6 +5,10 @@ export interface State {
     statusText: string
     message: string
   }
+  usersForm: {
+    title: string
+    url: string
+  }
 }
 
 export const State: State = {
@@ -13,5 +17,9 @@ export const State: State = {
     status: -1,
     statusText: '',
     message: ''
+  },
+  usersForm: {
+    title: 'usersForm',
+    url: '#'
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { store } from '../../store'
-import { RoutesBar, CountLabel } from '../../components'
+import { RoutesBar, Label } from '../../components'
 import { useUserEvents } from '../../hooks'
 import './style.less'
 import { timeDelta } from '../../utils'
@@ -27,12 +27,9 @@ export const News = () => {
                   </a>
                 </dd>
                 <dd>
-                  <CountLabel
-                    count={timeDelta(
-                      new Date().toISOString(),
-                      event.created_at
-                    )}
-                  />
+                  <Label>
+                    {timeDelta(new Date().toISOString(), event.created_at)}
+                  </Label>
                 </dd>
               </dl>
             </li>

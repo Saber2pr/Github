@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router, Config } from '@saber2pr/router'
+import { Router } from '@saber2pr/router'
 import {
   News,
   Repo,
@@ -18,8 +18,8 @@ import './index.less'
 const container = document.createElement('div')
 document.body.append(container)
 
-Config.render = ReactDOM.render
-Config.container = container
+Router.Config.render = ReactDOM.render
+Router.Config.container = container
 
 Router({
   '/': '/profile',

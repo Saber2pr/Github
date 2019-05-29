@@ -24,19 +24,25 @@ axios.interceptors.request.use(config => {
 })
 
 axios.interceptors.response.use(res => {
-  if (res.status === 200) return res
+  switch (res.status) {
+    case 200:
+      return res
 
-  if (res.status === 401) {
-    push('/login')
-  } else {
-    store.dispatch<A.throwError>({
-      type: 'throwError',
-      payload: {
-        status: res.status,
-        statusText: res.statusText,
-        message: JSON.stringify(res.data)
-      }
-    })
-    push('/error')
+    case 401:
+      push('/login')
+      return res
+
+    default:
+      store.dispatch<A.throwError>({
+        type: 'throwError',
+        payload: {
+          status: res.status,
+          statusText: res.statusText,
+          message: JSON.stringify(res.data)
+        }
+      })
+
+      push('/error')
+      return res
   }
 })

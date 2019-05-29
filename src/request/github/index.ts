@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '@saber2pr/request'
 import { GitHubAPI } from './url'
 import {
   User,

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Svg, RoutesBar, Label } from '../../components'
-import { Anchor } from '@saber2pr/router'
+import { Link } from '@saber2pr/router'
 import { store } from '../../store'
 import { useUserInfor } from '../../hooks'
 import './style.less'
@@ -26,9 +26,9 @@ export const Profile = () => {
     <>
       <header>
         <span className="title">Profile</span>
-        <Anchor className="right" href="/menu">
+        <Link className="right" to="/menu">
           <Svg.Menu />
-        </Anchor>
+        </Link>
       </header>
       <main className="profile">
         <dl className="table">
@@ -62,11 +62,11 @@ export const Profile = () => {
           </dd>
 
           <dd>
-            <Anchor href="/followers">Followers</Anchor>
+            <Link to="/followers">Followers</Link>
             <Label>{followers}</Label>
           </dd>
           <dd>
-            <Anchor href="/following">Following</Anchor>
+            <Link to="/following">Following</Link>
             <Label>{following}</Label>
           </dd>
 

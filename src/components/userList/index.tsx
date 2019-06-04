@@ -1,6 +1,6 @@
 import React from 'react'
 import { store } from '../../store'
-import { Anchor } from '@saber2pr/router'
+import { Link } from '@saber2pr/router'
 import { A } from '../../store'
 import { Users } from '@saber2pr/types-github-api'
 import './style.less'
@@ -17,9 +17,9 @@ export const UserList = ({ list }: { list: Users }) => (
       <li key={login}>
         <dl>
           <dt>
-            <Anchor href="/" onClick={onClick(login)}>
+            <Link href="/" onClick={onClick(login)}>
               <strong>{login}</strong>
-            </Anchor>
+            </Link>
           </dt>
           <dd>
             <img className="avatar" src={avatar_url} alt="[img]" />

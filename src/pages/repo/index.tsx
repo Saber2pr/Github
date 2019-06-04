@@ -1,6 +1,6 @@
 import React from 'react'
 import { useIndex, useUserRopesPage } from '../../hooks'
-import { Anchor, push } from '@saber2pr/router'
+import { Link } from '@saber2pr/router'
 import { store, A } from '../../store'
 import { RoutesBar, IndexBar, Svg, Label } from '../../components'
 import './style.less'
@@ -13,8 +13,6 @@ const gotoUsersFrom = (title: string, url: string) => () => {
       url
     }
   })
-
-  push('/usersFrom')
 }
 
 export const Repo = () => {
@@ -24,9 +22,9 @@ export const Repo = () => {
     <>
       <header>
         <span className="title">Repository</span>
-        <Anchor className="right" href="/find">
+        <Link className="right" to="/find">
           <Svg.Search />
-        </Anchor>
+        </Link>
       </header>
 
       <main className="repository">
@@ -47,15 +45,16 @@ export const Repo = () => {
 
                 <dd>
                   <nav>
-                    <Anchor
+                    <Link
+                      to="/usersFrom"
                       onClick={gotoUsersFrom('Stargazers', repo.stargazers_url)}
                     >
                       <u>stars</u>
                       <Label>{repo.stargazers_count}</Label>
-                    </Anchor>
-                    <Anchor>
+                    </Link>
+                    <Link to="">
                       forks<Label>{repo.forks_count}</Label>
-                    </Anchor>
+                    </Link>
                   </nav>
                 </dd>
               </dl>

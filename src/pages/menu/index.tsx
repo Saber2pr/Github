@@ -1,7 +1,7 @@
 import React from 'react'
 import { RoutesBar, InputHistory } from '../../components'
 import { useUserUpdate, useUserIdHistory } from '../../hooks'
-import { Anchor } from '@saber2pr/router'
+import { Link } from '@saber2pr/router'
 import './style.less'
 
 export const Menu = () => {
@@ -33,11 +33,11 @@ export const Menu = () => {
           </li>
 
           <li>current: {userId}</li>
-          <Anchor href="/login">
+          <Link href="/login">
             <strong>
               <u>Generate Authorization</u>
             </strong>
-          </Anchor>
+          </Link>
         </ul>
       </main>
       <footer>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useIndex, useSearch } from '../../hooks'
-import { push } from '@saber2pr/router'
+import History from '@saber2pr/router'
 import { Svg, RoutesBar, IndexBar } from '../../components'
 import { throttle } from '../../utils'
 import './style.less'
@@ -16,7 +16,7 @@ export const Find = () => {
 
   const throReq = () => search()
 
-  const onBlur = () => searchInput.current.value || push('/repo')
+  const onBlur = () => searchInput.current.value || History.push('/repo')
 
   return (
     <>

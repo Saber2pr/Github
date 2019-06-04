@@ -1,7 +1,7 @@
 import React from 'react'
 import { RoutesBar } from '../../components'
 import { store } from '../../store'
-import { Anchor } from '@saber2pr/router'
+import { Link } from '@saber2pr/router'
 import './style.less'
 
 export const Error = () => {
@@ -50,9 +50,9 @@ export const Error = () => {
             <ol className="tips">
               <li>check your network.</li>
               <li>
-                <Anchor href="/login">
+                <Link href="/login">
                   <u>try to re-login.</u>
-                </Anchor>
+                </Link>
               </li>
             </ol>
           </dd>

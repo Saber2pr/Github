@@ -3,7 +3,7 @@ import { InputHistory } from '../../components'
 import { store } from '../../store'
 import { useUserLogin, useUserIdHistory } from '../../hooks'
 import { Local } from '../../local'
-import { Anchor } from '@saber2pr/router'
+import { Link } from '@saber2pr/router'
 import { Config } from '../../config'
 import './style.less'
 
@@ -63,7 +63,7 @@ export const Login = () => {
               </table>
 
               <button>submit</button>
-              <Anchor href="/">cancel</Anchor>
+              <Link href="/profile">cancel</Link>
             </form>
           </dd>
 

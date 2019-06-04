@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import { store, A } from '../store'
-import { push } from '@saber2pr/router'
+import History from '@saber2pr/router'
 
 export const useUserUpdate = (): [
   React.MutableRefObject<HTMLInputElement>,
@@ -24,7 +24,7 @@ export const useUserUpdate = (): [
         type: 'updateUser',
         payload: userIdInput.current.value
       })
-      push('/')
+      History.push('/profile')
     }
   }
 

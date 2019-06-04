@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { Local } from '../local'
-import { push } from '@saber2pr/router'
+import History from '@saber2pr/router'
 import { store, A } from '../store'
 
 export const useUserLogin = (): [
@@ -20,7 +20,7 @@ export const useUserLogin = (): [
     if (username && password) {
       Local.saveUserAuth(username, password)
       store.dispatch<A.updateUser>({ type: 'updateUser', payload: username })
-      push('/')
+      History.push('/profile')
     }
   }
 

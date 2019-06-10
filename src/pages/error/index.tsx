@@ -1,11 +1,12 @@
 import React from 'react'
 import { RoutesBar } from '../../components'
-import { store } from '../../store'
+import { useStore } from '../../store'
 import { Link } from '@saber2pr/router'
 import './style.less'
 
 export const Error = () => {
-  const { status, statusText, message } = store.getState().error
+  const [{ error }] = useStore()
+  const { status, statusText, message } = error
   return (
     <>
       <header>

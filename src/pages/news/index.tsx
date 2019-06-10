@@ -1,12 +1,13 @@
 import React from 'react'
-import { store } from '../../store'
+import { useStore } from '../../store'
 import { RoutesBar, Label } from '../../components'
 import { useUserEvents } from '../../hooks'
 import './style.less'
 import { timeDelta } from '../../utils'
 
 export const News = () => {
-  const events = useUserEvents(store.getState().userId)
+  const [{ userId }] = useStore()
+  const events = useUserEvents(userId)
   return (
     <>
       <header>

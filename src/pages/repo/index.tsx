@@ -1,12 +1,13 @@
 import React from 'react'
 import { useIndex, useUserRopesPage } from '../../hooks'
 import { Link } from '@saber2pr/router'
-import { store, A } from '../../store'
+import { useStore, A } from '../../store'
 import { RoutesBar, IndexBar, Svg, Label } from '../../components'
 import './style.less'
 
 const gotoUsersFrom = (title: string, url: string) => () => {
-  store.dispatch<A.updateUserForm>({
+  const [_, dispatch] = useStore()
+  dispatch<A.updateUserForm>({
     type: 'updateUserForm',
     payload: {
       title,
@@ -17,7 +18,8 @@ const gotoUsersFrom = (title: string, url: string) => () => {
 
 export const Repo = () => {
   const [index, last, next] = useIndex()
-  const repos = useUserRopesPage(store.getState().userId, index)
+  const [{ userId }] = useStore()
+  const repos = useUserRopesPage(userId, index)
   return (
     <>
       <header>

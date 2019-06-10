@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { Local } from '../local'
 import History from '@saber2pr/router'
-import { store, A } from '../store'
+import { useStore, A } from '../store'
 
 export const useUserLogin = (): [
   React.MutableRefObject<HTMLInputElement>,
@@ -11,6 +11,8 @@ export const useUserLogin = (): [
   const usernameInput = useRef<HTMLInputElement>()
   const passwordInput = useRef<HTMLInputElement>()
 
+  const [_, dispatch] = useStore()
+
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -19,7 +21,7 @@ export const useUserLogin = (): [
 
     if (username && password) {
       Local.saveUserAuth(username, password)
-      store.dispatch<A.updateUser>({ type: 'updateUser', payload: username })
+      dispatch<A.updateUser>({ type: 'updateUser', payload: username })
       History.push('/profile')
     }
   }

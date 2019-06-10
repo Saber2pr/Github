@@ -1,4 +1,4 @@
-import { Reducer } from '@saber2pr/redux'
+import { Reducer } from '@saber2pr/react-redux'
 import { State } from './state'
 import { A } from './actions'
 

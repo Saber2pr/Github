@@ -1,12 +1,12 @@
 import React from 'react'
 import { Svg, RoutesBar, Label } from '../../components'
 import { Link } from '@saber2pr/router'
-import { store } from '../../store'
+import { useStore } from '../../store'
 import { useUserInfor } from '../../hooks'
 import './style.less'
 
 export const Profile = () => {
-  const userId = store.getState().userId
+  const [{ userId }] = useStore()
 
   const {
     login,

@@ -1,6 +1,6 @@
 import * as github from './github'
 import { Local } from '../local'
-import { store, A } from '../store'
+import { A, store } from '../store'
 import { Base64 } from '../utils'
 import History from '@saber2pr/router'
 import axios from '@saber2pr/request'

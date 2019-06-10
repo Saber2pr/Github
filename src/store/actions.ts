@@ -1,4 +1,4 @@
-import { Action } from '@saber2pr/redux'
+import { Action } from '@saber2pr/react-redux'
 
 export namespace A {
   interface PayloadAction<T, V> extends Action<T> {

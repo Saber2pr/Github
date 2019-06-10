@@ -1,15 +1,13 @@
 import React from 'react'
 import { RoutesBar, IndexBar, UserList } from '../../components'
 import { useIndex, useUserFollowPage } from '../../hooks'
-import { store } from '../../store'
+import { useStore } from '../../store'
 
 export const Followers = () => {
   const [index, last, next] = useIndex()
-  const followers = useUserFollowPage(
-    'follower',
-    store.getState().userId,
-    index
-  )
+
+  const [{ userId }] = useStore()
+  const followers = useUserFollowPage('follower', userId, index)
 
   return (
     <>

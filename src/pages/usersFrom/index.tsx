@@ -1,17 +1,17 @@
 import React from 'react'
 import { useIndex, useUserList } from '../../hooks'
 import { UserList, IndexBar, RoutesBar } from '../../components'
-import { store } from '../../store'
+import { useStore } from '../../store'
 
 export const UsersFrom = () => {
   const [index, last, next] = useIndex()
-  const usersFrom = store.getState().usersForm
-  const userList = useUserList(usersFrom.url, index)
+  const [{ usersForm }] = useStore()
+  const userList = useUserList(usersForm.url, index)
 
   return (
     <>
       <header>
-        <span className="title">{usersFrom.title}</span>
+        <span className="title">{usersForm.title}</span>
       </header>
 
       <main>

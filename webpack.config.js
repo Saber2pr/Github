@@ -2,7 +2,7 @@
  * @Author: saber2pr
  * @Date: 2019-05-22 20:20:01
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-05-25 20:31:37
+ * @Last Modified time: 2019-06-11 17:13:25
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -54,6 +54,6 @@ module.exports = WebpackConfig({
     ]
   },
   plugins: [new HtmlWebpackPlugin({
-    templateContent
+    templateContent: templateContent('Github')
   }), extractLess]
 })
